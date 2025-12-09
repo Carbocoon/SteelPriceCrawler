@@ -48,10 +48,6 @@ st.markdown("""
         border-radius: 8px;
         height: 3rem;
     }
-    /* 侧边栏样式 */
-    section[data-testid="stSidebar"] {
-        background-color: #f8f9fa;
-    }
     /* 标题样式 */
     h1 {
         color: #1E88E5;
@@ -59,11 +55,9 @@ st.markdown("""
     }
     /* 卡片样式 */
     div.stMetric {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
+        border: 1px solid rgba(128, 128, 128, 0.2);
         padding: 15px;
         border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 </style>
 """, unsafe_allow_html=True)
