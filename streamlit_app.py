@@ -205,9 +205,10 @@ def main():
                 )
         
         st.markdown("---")
-        if st.button("🔄 开始新任务", type="secondary", use_container_width=True):
-            st.session_state.crawled_data = None
-            st.session_state.spider = None
+        # 添加显眼的开始新任务按钮
+        if st.button("🔄 开始新任务 (返回首页)", type="primary", use_container_width=True):
+            # 清除所有状态以完全重置
+            st.session_state.clear()
             st.rerun()
 
     elif st.session_state.spider is None:
