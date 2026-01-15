@@ -1,6 +1,13 @@
+import os
+# patch for missing distutils in Python 3.12+
+try:
+    import setuptools
+    import distutils
+except ImportError:
+    pass
+
 import streamlit as st
 import pandas as pd
-import os
 import time
 import logging
 import io
