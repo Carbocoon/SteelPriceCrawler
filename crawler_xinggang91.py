@@ -243,7 +243,7 @@ class XinggangSeleniumSpider:
                 item['品名'] = cells[0]
                 item['材质'] = cells[1]
                 item['规格'] = cells[2]
-                item['负差'] = cells[3]
+                item['负差'] = cells[3].replace('-', '~')
                 item['支/件'] = cells[4]
                 item['支重(吨)'] = cells[5]
                 item['可售量'] = cells[6]
@@ -284,7 +284,7 @@ class XinggangSeleniumSpider:
                 item['品名'] = cells[0]
                 item['材质'] = cells[1]
                 item['规格'] = cells[2]
-                item['负差'] = cells[3]
+                item['负差'] = cells[3].replace('-', '~')
                 item['支/件'] = cells[4]
                 item['支重(吨)'] = cells[5]
                 item['可售量'] = cells[6]
@@ -302,7 +302,7 @@ class XinggangSeleniumSpider:
                     item['规格'] = parts[2]
                     
                     if len(parts) >= 6:
-                        item['负差'] = parts[3]
+                        item['负差'] = parts[3].replace('-', '~')
                         item['支/件'] = parts[4]
                         item['支重(吨)'] = parts[5]
                     

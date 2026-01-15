@@ -127,8 +127,8 @@ def main():
     # 日志区域 (始终显示)
     with status_container:
         log_expander = st.expander("🖥️ 实时运行日志", expanded=True)
-        with log_expander:
-            log_placeholder = st.empty()
+        with log_expander:6
+        log_placeholder = st.empty()
         
         # 配置日志系统
         logger = logging.getLogger()

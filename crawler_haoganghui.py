@@ -301,12 +301,12 @@ class HaoganghuiSpider:
                     if '/' in combined_val:
                         parts = combined_val.split('/')
                         # 负差去掉正负号
-                        item['负差'] = parts[0].replace('+', '').replace('-', '').strip()
+                        item['负差'] = parts[0].replace('+', '').replace('-', '~').strip()
                         if len(parts) > 1:
                             item['支重'] = parts[1].strip()
                     else:
                         # 如果没有斜杠，尝试直接赋值给负差(去掉符号)
-                        item['负差'] = combined_val.replace('+', '').replace('-', '').strip()
+                        item['负差'] = combined_val.replace('+', '').replace('-', '~').strip()
                     
                     item['长度'] = cell_texts[5]
                     item['支/件'] = cell_texts[6]
@@ -328,11 +328,11 @@ class HaoganghuiSpider:
                     combined_val = cell_texts[4]
                     if '/' in combined_val:
                         parts = combined_val.split('/')
-                        item['负差'] = parts[0].replace('+', '').replace('-', '').strip()
+                        item['负差'] = parts[0].replace('+', '').replace('-', '~').strip()
                         if len(parts) > 1:
                             item['支重'] = parts[1].strip()
                     else:
-                        item['负差'] = combined_val.replace('+', '').replace('-', '').strip()
+                        item['负差'] = combined_val.replace('+', '').replace('-', '~').strip()
 
                     item['长度'] = cell_texts[5]
                     item['支/件'] = cell_texts[6]
@@ -414,7 +414,7 @@ class HaoganghuiSpider:
             # 尝试提取数字
             tolerance_match = re.search(r'([+-]?\d+(?:\.\d+)?)%?', text)
             if tolerance_match:
-                item['负差'] = tolerance_match.group(1)
+                item['负差'] = tolerance_match.group(1).replace('-', '~')
     
     def analyze_text_for_fields(self, item, text):
         """分析文本提取字段"""
