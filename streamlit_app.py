@@ -24,8 +24,10 @@ if current_dir not in sys.path:
 try:
     from crawler_haoganghui import HaoganghuiSpider
     from crawler_xinggang91 import XinggangSeleniumSpider
-except ImportError:
-    st.error("无法导入爬虫脚本，请确保 crawler_haoganghui.py 和 crawler_xinggang91.py 在同一目录下。")
+except ImportError as e:
+    st.error(f"无法导入爬虫脚本，请确保 crawler_haoganghui.py 和 crawler_xinggang91.py 在同一目录下。\n详细错误: {e}")
+except Exception as e:
+    st.error(f"导入时发生意外错误: {e}")
 
 # 初始化 Session State
 if 'spider' not in st.session_state:
@@ -98,11 +100,19 @@ def main():
         )
         
         st.subheader("2. 运行模式")
+        # 检测是否在 Linux (Streamlit Cloud) 环境
+        is_linux_server = sys.platform.startswith('linux')
+        
+        headless_default = True if is_linux_server else False
+        headless_help = "开启后浏览器将隐藏在后台运行。"
+        if is_linux_server:
+            headless_help += " (检测到云服务器环境，强制开启无头模式)"
+
         headless = st.toggle(
             "无头模式 (后台运行)", 
-            value=False,
-            help="开启后浏览器将隐藏在后台运行。注意：首次运行时建议关闭此选项，以便手动完成登录操作。",
-            disabled=disabled
+            value=headless_default,
+            help=headless_help,
+            disabled=disabled or is_linux_server
         )
         
         st.divider()

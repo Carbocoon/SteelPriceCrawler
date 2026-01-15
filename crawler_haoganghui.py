@@ -40,6 +40,7 @@ class HaoganghuiSpider:
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument('--disable-gpu')
             chrome_options.add_argument('--disable-software-rasterizer') # 禁用软件光栅化
+
             chrome_options.add_argument('--log-level=3') # 禁用日志
             chrome_options.add_argument('--window-size=1920,1080')
             chrome_options.add_argument('--disable-blink-features=AutomationControlled')
